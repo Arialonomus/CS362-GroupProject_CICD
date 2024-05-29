@@ -1,10 +1,12 @@
 import unittest
+from task import conv_num
 
 
-class TestCase(unittest.TestCase):
-
+class TestConvNum(unittest.TestCase):
+    """Test that the function returns None for non-string values"""
     def test1(self):
-        self.assertTrue(True)
+        test_case = 1
+        self.assertEqual(conv_num(test_case), None)
 
 
 if __name__ == '__main__':
