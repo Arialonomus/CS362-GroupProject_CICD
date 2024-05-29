@@ -105,6 +105,13 @@ class TestConvNum(unittest.TestCase):
         expected_val = -255
         self.assertEqual(conv_num(test_case), expected_val)
 
+    """Test that conv_num properly returns None for hexadecimal
+    strings without the 0x prefix"""
+    def test16(self):
+        test_case = 'AD4'
+        expected_val = None
+        self.assertEqual(conv_num(test_case), expected_val)
+
 
 if __name__ == '__main__':
     unittest.main()
