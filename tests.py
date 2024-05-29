@@ -35,6 +35,12 @@ class TestConvNum(unittest.TestCase):
         expected_val = None
         self.assertEqual(conv_num(test_case), expected_val)
 
+    """Test that conv_num properly converts strings to the equivalent
+    non-negative decimal integer"""
+    def test6(self):
+        test_case = '12345'
+        expected_val = 12345
+        self.assertEqual(conv_num(test_case), expected_val)
 
 
 if __name__ == '__main__':
