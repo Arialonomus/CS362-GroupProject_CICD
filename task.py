@@ -33,4 +33,8 @@ def conv_num(num_str):
         digit = ord(char) - ord('0')
         result = result * 10 + digit
 
+    # Negate result if string was negative
+    if is_negative:
+        result = -result
+
     return result
