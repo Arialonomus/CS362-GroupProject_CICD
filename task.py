@@ -29,10 +29,7 @@ def conv_num(num_str):
         return None
 
     # Validate input string contains no invalid non-numeric characters
-    if is_hexadecimal:
-        pattern = r'[^0-9A-F]'
-    else:
-        pattern = r'[^0-9.]'
+    pattern = r'[^0-9A-F]' if is_hexadecimal else r'[^0-9.]'
     if re.search(pattern, num_str) is not None:
         return None
 
