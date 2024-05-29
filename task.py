@@ -27,6 +27,8 @@ def convert_fractional(fractional_str):
         divisor *= 10
         fractional_result += digit / divisor
 
+    return fractional_result
+
 
 def conv_num(num_str):
     # Validate input is of type str
@@ -70,8 +72,7 @@ def conv_num(num_str):
     if decimal_count == 0:
         result = convert_integer(integer_part, is_hexadecimal)
     else:
-        result = convert_integer(integer_part, False)
-        + convert_fractional(fractional_part)
+        result = convert_integer(integer_part, False) + convert_fractional(fractional_part)
 
     # Negate result if string was negative
     if is_negative:
