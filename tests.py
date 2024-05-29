@@ -84,6 +84,12 @@ class TestConvNum(unittest.TestCase):
         expected_val = 2772
         self.assertEqual(conv_num(test_case), expected_val)
 
+    """Test that conv_num properly returns none for hexadecimal
+    strings containing invalid alphabetic symbols"""
+    def test13(self):
+        test_case = '0xAZ4'
+        expected_val = None
+        self.assertEqual(conv_num(test_case), expected_val)
 
 if __name__ == '__main__':
     unittest.main()
