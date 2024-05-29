@@ -21,6 +21,13 @@ class TestConvNum(unittest.TestCase):
         expected_val = None
         self.assertEqual(conv_num(test_case), expected_val)
 
+    """Test that conv_num returns None for non-hex strings 
+    containing non-numeric, non-decmial characters"""
+    def test4(self):
+        test_case = '12345A'
+        expected_val = None
+        self.assertEqual(conv_num(test_case), expected_val)
+
 
 if __name__ == '__main__':
     unittest.main()
