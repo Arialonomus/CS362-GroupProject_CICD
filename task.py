@@ -23,17 +23,17 @@ def conv_num(num_str):
         is_hexadecimal = True
         num_str = num_str[2:]
 
+    # Validate input string contains valid number of decimal points
+    decimal_count = num_str.count('.')
+    if decimal_count > 1 or (is_hexadecimal and decimal_count > 0):
+        return None
+
     # Validate input string contains no invalid non-numeric characters
     if is_hexadecimal:
         pattern = r'[^0-9A-F]'
     else:
         pattern = r'[^0-9.]'
     if re.search(pattern, num_str) is not None:
-        return None
-
-    # Validate input string contains valid number of decimal points
-    decimal_count = num_str.count('.')
-    if decimal_count > 1 or (is_hexadecimal and decimal_count > 0):
         return None
 
     # Split string into decimal and integer parts
