@@ -1,6 +1,33 @@
 import re
 
 
+def convert_integer(int_str, is_hexadecimal):
+    """Converts an str of digits representing a decimal or
+    hexadecimal integer to an int value"""
+    integer_result = 0
+    base = 16 if is_hexadecimal else 10
+    for char in int_str:
+        # Use encoding values to convert characters to digits
+        if char.isdigit():
+            digit = ord(char) - ord('0')
+        else:
+            digit = ord(char) - ord('A') + 10
+        integer_result = integer_result * base + digit
+
+    return integer_result
+
+
+def convert_fractional(fractional_str):
+    """Converts an str of digits representing an fractional portion
+    of a decimal number to a float value"""
+    fractional_result = 0
+    divisor = 1
+    for char in fractional_str:
+        digit = ord(char) - ord('0')
+        divisor *= 10
+        fractional_result += digit / divisor
+
+
 def conv_num(num_str):
     # Validate input is of type str
     if type(num_str) is not str:
@@ -39,30 +66,12 @@ def conv_num(num_str):
     else:
         integer_part, fractional_part = num_str, ''
 
-    # Convert the integer part to an integer
-    integer_result = 0
-    base = 16 if is_hexadecimal else 10
-    for char in integer_part:
-        # Use encoding values to convert characters to digits
-        if char.isdigit():
-            digit = ord(char) - ord('0')
-        else:
-            digit = ord(char) - ord('A') + 10
-        integer_result = integer_result * base + digit
-
-    # Convert the fractional part to a float
-    fractional_result = 0
-    divisor = 1
-    for char in fractional_part:
-        digit = ord(char) - ord('0')
-        divisor *= 10
-        fractional_result += digit / divisor
-
     # Combine the integer and fractional parts or return integer part
     if decimal_count == 0:
-        result = integer_result
+        result = convert_integer(integer_part, is_hexadecimal)
     else:
-        result = integer_result + fractional_result
+        result = convert_integer(integer_part, False)
+        + convert_fractional(fractional_part)
 
     # Negate result if string was negative
     if is_negative:
