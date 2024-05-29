@@ -7,8 +7,7 @@ def conv_num(num_str):
         return None
 
     # Validate input string is not empty
-    str_len = len(num_str)
-    if str_len < 1:
+    if len(num_str) < 1:
         return None
 
     # Strip negative symbol if present
@@ -16,7 +15,6 @@ def conv_num(num_str):
     if num_str[0] == '-':
         is_negative = True
         num_str = num_str[1:]
-        str_len -= 1
 
     # Strip hexadecimal prefix, if present
     is_hexadecimal = False
@@ -24,7 +22,6 @@ def conv_num(num_str):
     if num_str[:2] == '0X':
         is_hexadecimal = True
         num_str = num_str[2:]
-        str_len -= 2
 
     # Validate input string contains no invalid non-numeric characters
     if is_hexadecimal:
