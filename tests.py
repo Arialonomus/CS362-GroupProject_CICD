@@ -42,11 +42,18 @@ class TestConvNum(unittest.TestCase):
         expected_val = 12345
         self.assertEqual(conv_num(test_case), expected_val)
 
-    """Test that conv_num properly converts negative digit strings to the 
+    """Test that conv_num properly converts negative digit strings to the
     equivalent integer"""
     def test7(self):
         test_case = '-98765'
         expected_val = -98765
+        self.assertEqual(conv_num(test_case), expected_val)
+
+    """Test that conv_num properly converts rational decimal strings
+    to the equivalent floating point number"""
+    def test8(self):
+        test_case = '-123.45'
+        expected_val = -123.45
         self.assertEqual(conv_num(test_case), expected_val)
 
 
