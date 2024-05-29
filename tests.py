@@ -98,6 +98,13 @@ class TestConvNum(unittest.TestCase):
         expected_val = None
         self.assertEqual(conv_num(test_case), expected_val)
 
+    """Test that conv_num properly converts negative hexadecimal
+    values to decimal integers"""
+    def test15(self):
+        test_case = '-0xFF'
+        expected_val = -255
+        self.assertEqual(conv_num(test_case), expected_val)
+
 
 if __name__ == '__main__':
     unittest.main()
