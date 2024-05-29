@@ -6,7 +6,14 @@ class TestConvNum(unittest.TestCase):
     """Test that the function returns None for non-string values"""
     def test1(self):
         test_case = 1
-        self.assertEqual(conv_num(test_case), None)
+        expected_val = None
+        self.assertEqual(conv_num(test_case), expected_val)
+
+    """Test that the function returns None for the empty string"""
+    def test2(self):
+        test_case = ""
+        expected_val = None
+        self.assertEqual(conv_num(test_case), expected_val)
 
 
 if __name__ == '__main__':
