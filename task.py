@@ -26,4 +26,11 @@ def conv_num(num_str):
     if num_str.count('.') > 1:
         return None
 
-    return False
+    # Convert string to integer
+    result = 0
+    for char in num_str:
+        # Use encoding values to convert characters to digits
+        digit = ord(char) - ord('0')
+        result = result * 10 + digit
+
+    return result
