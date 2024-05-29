@@ -28,6 +28,14 @@ class TestConvNum(unittest.TestCase):
         expected_val = None
         self.assertEqual(conv_num(test_case), expected_val)
 
+    """Test that conv_num rejects negative strings contraining more than one
+    negative symbol"""
+    def test5(self):
+        test_case = '-12345-'
+        expected_val = None
+        self.assertEqual(conv_num(test_case), expected_val)
+
+
 
 if __name__ == '__main__':
     unittest.main()
