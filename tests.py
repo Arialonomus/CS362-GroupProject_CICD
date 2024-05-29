@@ -77,6 +77,13 @@ class TestConvNum(unittest.TestCase):
         expected_val = 2772
         self.assertEqual(conv_num(test_case), expected_val)
 
+    """Test that conv_num properly converts case-insensitive
+    hexadecimal values to decimal integers"""
+    def test12(self):
+        test_case = '0Xad4'
+        expected_val = 2772
+        self.assertEqual(conv_num(test_case), expected_val)
+
 
 if __name__ == '__main__':
     unittest.main()
