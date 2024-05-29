@@ -56,6 +56,13 @@ class TestConvNum(unittest.TestCase):
         expected_val = -123.45
         self.assertEqual(conv_num(test_case), expected_val)
 
+    """Test that conv_num properly converts float values without a
+    leading zero"""
+    def test9(self):
+        test_case = '.45'
+        expected_val = 0.45
+        self.assertEqual(conv_num(test_case), expected_val)
+
 
 if __name__ == '__main__':
     unittest.main()
