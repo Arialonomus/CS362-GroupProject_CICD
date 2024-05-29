@@ -21,7 +21,7 @@ class TestConvNum(unittest.TestCase):
         expected_val = None
         self.assertEqual(conv_num(test_case), expected_val)
 
-    """Test that conv_num returns None for non-hex strings 
+    """Test that conv_num returns None for non-hex strings
     containing non-numeric, non-decmial characters"""
     def test4(self):
         test_case = '12345A'
@@ -40,6 +40,13 @@ class TestConvNum(unittest.TestCase):
     def test6(self):
         test_case = '12345'
         expected_val = 12345
+        self.assertEqual(conv_num(test_case), expected_val)
+
+    """Test that conv_num properly converts negative digit strings to the 
+    equivalent integer"""
+    def test7(self):
+        test_case = '-98765'
+        expected_val = -98765
         self.assertEqual(conv_num(test_case), expected_val)
 
 
