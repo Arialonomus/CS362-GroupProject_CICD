@@ -18,13 +18,25 @@ def conv_num(num_str):
         num_str = num_str[1:]
         str_len -= 1
 
+    # Strip hexadecimal prefix, if present
+    is_hexadecimal = False
+    num_str = num_str.upper()
+    if num_str[:2] == '0X':
+        is_hexadecimal = True
+        num_str = num_str[2:]
+        str_len -= 2
+
     # Validate input string contains no invalid non-numeric characters
-    if re.search(r'[^0-9.]', num_str) is not None:
+    if is_hexadecimal:
+        pattern = r'[^0-9A-F]'
+    else:
+        pattern = r'[^0-9.]'
+    if re.search(pattern, num_str) is not None:
         return None
 
-    # Validate input string contains no more than one decimal point
+    # Validate input string contains valid number of decimal points
     decimal_count = num_str.count('.')
-    if decimal_count > 1:
+    if decimal_count > 1 or (is_hexadecimal and decimal_count > 0):
         return None
 
     # Split string into decimal and integer parts
@@ -35,10 +47,14 @@ def conv_num(num_str):
 
     # Convert the integer part to an integer
     integer_result = 0
+    base = 16 if is_hexadecimal else 10
     for char in integer_part:
         # Use encoding values to convert characters to digits
-        digit = ord(char) - ord('0')
-        integer_result = integer_result * 10 + digit
+        if char.isdigit():
+            digit = ord(char) - ord('0')
+        else:
+            digit = ord(char) - ord('A') + 10
+        integer_result = integer_result * base + digit
 
     # Convert the fractional part to a float
     fractional_result = 0
