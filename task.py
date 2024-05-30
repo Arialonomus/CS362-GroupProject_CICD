@@ -80,6 +80,7 @@ def conv_num(num_str):
 
     return result
 
+
 def leap_year(year: int) -> bool:
     """
     Checks if a year is a leap year or not
@@ -88,21 +89,21 @@ def leap_year(year: int) -> bool:
         return True
     else:
         False
-        
-        
+
+
 def calculate_year(days: int):
     """
     Takes in the number of days and calculates the year
     """
     year = 1970
-    
+
     while True:
         # Check for leap year
         if leap_year(year):
             days_in_year = 366
         else:
             days_in_year = 365
-            
+
         # Check to see if year has been reached
         if days >= days_in_year:
             days -= days_in_year
@@ -112,7 +113,8 @@ def calculate_year(days: int):
 
     return days, year
 
-def calculate_month_day(year: int, days:int):
+
+def calculate_month_day(year: int, days: int):
     """
     Calculates the month and a day based on year and days
     """
@@ -120,7 +122,7 @@ def calculate_month_day(year: int, days:int):
     month_days_reg = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     month = 1
     day = 0  # Intialize
-    
+
     if leap_year(year):
         # Use leap year list (29 days in Feb)
         for i in month_days_leap:
@@ -130,7 +132,7 @@ def calculate_month_day(year: int, days:int):
             else:
                 day = days + 1
                 break
-                
+
     else:
         # 28 days in feb
         for i in month_days_reg:
@@ -140,9 +142,9 @@ def calculate_month_day(year: int, days:int):
             else:
                 day = days + 1
                 break
-                
+
     return month, day
-    
+
 
 def my_datetime(num_sec: int):
     """
@@ -150,8 +152,8 @@ def my_datetime(num_sec: int):
     """
     num_sec_day = 86400
     days = num_sec // num_sec_day   # Days since 01-01-1970
-    
+
     days_left, year = calculate_year(days)              # Calculate year and get remaining days
     month, day = calculate_month_day(year, days_left)   # Get month, day
-    
+
     return f"{month:02d}-{day:02d}-{year}"
