@@ -1,5 +1,5 @@
 import unittest
-from task import conv_num, my_datetime
+from task import conv_num, my_datetime, conv_endian
 
 
 class TestConvNum(unittest.TestCase):
@@ -159,6 +159,83 @@ class TestDate(unittest.TestCase):
         expected = '06-05-9000'
         self.assertEqual(my_datetime(val), expected)
 
+
+class TestEndian(unittest.TestCase):
+    """
+    Tests for conv_endian(num, endian='big') function in task.py
+    """
+
+    def test1(self):
+        """
+        Test positive numbers in big endian
+        """
+        val = 123456
+        expected = '01 E2 40'
+        self.assertEqual(conv_endian(val), expected)
+
+    def test2(self):
+        """
+        Test positive numbers in little endian
+        """
+        val = 123456
+        expected = '40 E2 01'
+        self.assertEqual(conv_endian(val, 'little'), expected)
+
+    def test3(self):
+        """
+        Test negative numbers in big endian
+        """
+        val = -654321
+        expected = '-09 FB F1'
+        self.assertEqual(conv_endian(val), expected)
+
+    def test4(self):
+        """
+        Test negative numbers in little endian
+        """
+        val = -654321
+        expected = '-F1 FB 09'
+        self.assertEqual(conv_endian(val, 'little'), expected)
+
+    def test5(self):
+        """
+        Test zero in big endian
+        """
+        val = 0
+        expected = '00'
+        self.assertEqual(conv_endian(val), expected)
+
+    def test6(self):
+        """
+        Test zero in little endian
+        """
+        val = 0
+        expected = '00'
+        self.assertEqual(conv_endian(val, 'little'), expected)
+    
+    def test7(self):
+        """
+        Test large numbers in big endian
+        """
+        val = 1234567890
+        expected = '49 96 02 D2'
+        self.assertEqual(conv_endian(val), expected)
+
+    def test8(self):
+        """
+        Test large numbers in little endian
+        """
+        val = 1234567890
+        expected = 'D2 02 96 49'
+        self.assertEqual(conv_endian(val, 'little'), expected)
+
+    def test9(self):
+        """
+        Test to see if None is returned for invalid endian
+        """
+        val = 123456
+        expected = None
+        self.assertEqual(conv_endian(val, 'invalid'), expected)
 
 if __name__ == '__main__':
     unittest.main()
