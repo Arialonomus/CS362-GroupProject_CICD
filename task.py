@@ -79,3 +79,24 @@ def conv_num(num_str):
         result = -result
 
     return result
+
+def leap_year(year: int) -> bool:
+    """
+    Checks if a year is a leap year or not
+    """
+    if year % 100 == 0 and year % 400 == 0:
+        return True
+    else:
+        False
+
+
+def my_datetime(num_sec):
+    """
+    Returns the day-month-year of the number seconds after 01-01-1970
+    """
+    # Constants
+    num_sec_day = 86400
+    year = 1970
+    
+    
+    pass
