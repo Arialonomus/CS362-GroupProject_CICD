@@ -130,8 +130,24 @@ class TestDate(unittest.TestCase):
         """
         Test leap year value
         """
-        val = 9876543210
-        expected = '12-22-2282'
+        val = 1716120000
+        expected = '05-19-2024'
+        self.assertEqual(my_datetime(val), expected)
+        
+    def test3(self):
+        """
+        Test a regular year
+        """
+        val = 32503723200
+        expected = '01-01-3000'
+        self.assertEqual(my_datetime(val), expected)
+        
+    def test4(self):
+        """
+        Test edge of year case
+        """
+        val = 946684799
+        expected = '12-31-1999'
         self.assertEqual(my_datetime(val), expected)
 
 if __name__ == '__main__':

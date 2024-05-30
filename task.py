@@ -155,8 +155,3 @@ def my_datetime(num_sec: int):
     month, day = calculate_month_day(year, days_left)   # Get month, day
     
     return f"{month:02d}-{day:02d}-{year}"
-
-
-val = 9876543210
-
-print(my_datetime(val))
