@@ -167,7 +167,7 @@ def conv_endian(num, endian='big'):
     # validate endianness
     if endian not in ['big', 'little']:
         return None
-    
+
     # handle negative numbers
     negative = num < 0
     if negative:
