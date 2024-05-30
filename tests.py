@@ -212,7 +212,7 @@ class TestEndian(unittest.TestCase):
         val = 0
         expected = '00'
         self.assertEqual(conv_endian(val, 'little'), expected)
-    
+
     def test7(self):
         """
         Test large numbers in big endian
