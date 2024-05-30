@@ -84,13 +84,13 @@ def leap_year(year: int) -> bool:
     """
     Checks if a year is a leap year or not
     """
-    if year % 100 == 0 and year % 400 == 0:
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
         return True
     else:
         False
         
         
-def calculate_year(days: int) -> tuple:
+def calculate_year(days: int):
     """
     Takes in the number of days and calculates the year
     """
@@ -99,9 +99,9 @@ def calculate_year(days: int) -> tuple:
     while True:
         # Check for leap year
         if leap_year(year):
-            days_in_year = 365
-        else:
             days_in_year = 366
+        else:
+            days_in_year = 365
             
         # Check to see if year has been reached
         if days >= days_in_year:
@@ -112,7 +112,7 @@ def calculate_year(days: int) -> tuple:
 
     return days, year
 
-def calculate_month_day(year: int, days:int) -> tuple:
+def calculate_month_day(year: int, days:int):
     """
     Calculates the month and a day based on year and days
     """
@@ -144,15 +144,19 @@ def calculate_month_day(year: int, days:int) -> tuple:
     return month, day
     
 
-def my_datetime(num_sec: int) -> str:
+def my_datetime(num_sec: int):
     """
     Returns the day-month-year of the number seconds after 01-01-1970
     """
     num_sec_day = 86400
-    #year = 1970
     days = num_sec // num_sec_day   # Days since 01-01-1970
     
     days_left, year = calculate_year(days)              # Calculate year and get remaining days
-    month, day = calculate_month_day(year, days_left)   # Get day, month
+    month, day = calculate_month_day(year, days_left)   # Get month, day
     
     return f"{month:02d}-{day:02d}-{year}"
+
+
+val = 9876543210
+
+print(my_datetime(val))

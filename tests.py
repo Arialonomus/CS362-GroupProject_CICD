@@ -125,7 +125,14 @@ class TestDate(unittest.TestCase):
         val = 0
         expected = '01-01-1970'
         self.assertEqual(my_datetime(val), expected)
-
+    
+    def test2(self):
+        """
+        Test leap year value
+        """
+        val = 9876543210
+        expected = '12-22-2282'
+        self.assertEqual(my_datetime(val), expected)
 
 if __name__ == '__main__':
     unittest.main()
