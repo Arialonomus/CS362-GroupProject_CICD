@@ -118,7 +118,7 @@ def calculate_month_day(year, days):
     """
     month_days_leap = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     month_days_reg = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    month = 0
+    month = 1
     day = 0  # Intialize
     
     if leap_year(year):
@@ -158,4 +158,4 @@ def my_datetime(num_sec: int) -> str:
     print(f"{month}-{day}-{year}")
 
 
-my_datetime(10000000000)
+my_datetime(0)
