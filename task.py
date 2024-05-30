@@ -88,15 +88,32 @@ def leap_year(year: int) -> bool:
         return True
     else:
         False
+        
+        
+def calculate_year(days: int):
+    year = 1970
+    
+    while True:
+        if leap_year(year):
+            days_in_year = 365
+        else:
+            days_in_year = 366
+
+        if days >= days_in_year:
+            days -= days_in_year
+            year += 1
+
+    return days, year
 
 
-def my_datetime(num_sec):
+
+def my_datetime(num_sec: int) -> str:
     """
     Returns the day-month-year of the number seconds after 01-01-1970
     """
     # Constants
     num_sec_day = 86400
-    year = 1970
-    
+    #year = 1970
+    days = num_sec // num_sec_day
     
     pass
