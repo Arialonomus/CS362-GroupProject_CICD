@@ -91,14 +91,19 @@ def leap_year(year: int) -> bool:
         
         
 def calculate_year(days: int):
+    """
+    Takes in the number of days and calculates the year
+    """
     year = 1970
     
     while True:
+        # Check for leap year
         if leap_year(year):
             days_in_year = 365
         else:
             days_in_year = 366
-
+            
+        # Check to see if year has been reached
         if days >= days_in_year:
             days -= days_in_year
             year += 1
@@ -106,6 +111,35 @@ def calculate_year(days: int):
             break
 
     return days, year
+
+def calculate_month_day(year, days):
+    """
+    Calculates the month and a day based on year and days
+    """
+    month_days_leap = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    month_days_reg = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    month = 1
+    
+    if leap_year(year):
+        # Use leap year list (29 days in Feb)
+        for i in month_days_leap:
+            if days >= month_days_leap:
+                days -= month_days_leap
+                month += 1
+            else:
+                day = days + 1
+                
+    else:
+        # 28 days in feb
+        for i in month_days_reg:
+            if days >= month_days_reg:
+                days -= month_days_reg
+                month += 1
+            else:
+                day = days + 1
+                
+    return month, day
+    
 
 
 
@@ -117,5 +151,7 @@ def my_datetime(num_sec: int) -> str:
     num_sec_day = 86400
     #year = 1970
     days = num_sec // num_sec_day
+    
+    year, days_left = calculate_year(days)
     
     pass
