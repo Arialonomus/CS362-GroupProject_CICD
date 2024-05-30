@@ -162,12 +162,12 @@ class TestDate(unittest.TestCase):
 
 class TestEndian(unittest.TestCase):
     """
-    Tests for conv_endian(num, endian='big') function in task.py
+    Tests for conv_endian(num, endian='big') function in task.py.
     """
 
     def test1(self):
         """
-        Test positive numbers in big endian
+        Test positive numbers in big endian.
         """
         val = 123456
         expected = '01 E2 40'
@@ -175,7 +175,7 @@ class TestEndian(unittest.TestCase):
 
     def test2(self):
         """
-        Test positive numbers in little endian
+        Test positive numbers in little endian.
         """
         val = 123456
         expected = '40 E2 01'
@@ -183,7 +183,7 @@ class TestEndian(unittest.TestCase):
 
     def test3(self):
         """
-        Test negative numbers in big endian
+        Test negative numbers in big endian.
         """
         val = -654321
         expected = '-09 FB F1'
@@ -191,7 +191,7 @@ class TestEndian(unittest.TestCase):
 
     def test4(self):
         """
-        Test negative numbers in little endian
+        Test negative numbers in little endian.
         """
         val = -654321
         expected = '-F1 FB 09'
@@ -199,7 +199,7 @@ class TestEndian(unittest.TestCase):
 
     def test5(self):
         """
-        Test zero in big endian
+        Test zero in big endian.
         """
         val = 0
         expected = '00'
@@ -207,7 +207,7 @@ class TestEndian(unittest.TestCase):
 
     def test6(self):
         """
-        Test zero in little endian
+        Test zero in little endian.
         """
         val = 0
         expected = '00'
@@ -215,7 +215,7 @@ class TestEndian(unittest.TestCase):
 
     def test7(self):
         """
-        Test large numbers in big endian
+        Test large numbers in big endian.
         """
         val = 1234567890
         expected = '49 96 02 D2'
@@ -223,7 +223,7 @@ class TestEndian(unittest.TestCase):
 
     def test8(self):
         """
-        Test large numbers in little endian
+        Test large numbers in little endian.
         """
         val = 1234567890
         expected = 'D2 02 96 49'
@@ -231,7 +231,7 @@ class TestEndian(unittest.TestCase):
 
     def test9(self):
         """
-        Test to see if None is returned for invalid endian
+        Test to see if None is returned for invalid endian.
         """
         val = 123456
         expected = None
