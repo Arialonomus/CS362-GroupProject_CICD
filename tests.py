@@ -1,5 +1,5 @@
 import unittest
-from task import conv_num
+from task import conv_num, my_datetime
 
 
 class TestConvNum(unittest.TestCase):
@@ -111,6 +111,53 @@ class TestConvNum(unittest.TestCase):
         test_case = 'AD4'
         expected_val = None
         self.assertEqual(conv_num(test_case), expected_val)
+
+
+class TestDate(unittest.TestCase):
+    """
+    Tests for my_datetime(num_sec) function in task.py
+    """
+
+    def test1(self):
+        """
+        Test that function properly returns start date when input is 0
+        """
+        val = 0
+        expected = '01-01-1970'
+        self.assertEqual(my_datetime(val), expected)
+
+    def test2(self):
+        """
+        Test leap year value
+        """
+        val = 1716120000
+        expected = '05-19-2024'
+        self.assertEqual(my_datetime(val), expected)
+
+    def test3(self):
+        """
+        Test a regular year
+        """
+        val = 32503723200
+        expected = '01-01-3000'
+        self.assertEqual(my_datetime(val), expected)
+
+    def test4(self):
+        """
+        Test edge of year case
+        """
+        val = 946684799
+        expected = '12-31-1999'
+        self.assertEqual(my_datetime(val), expected)
+
+    def test5(self):
+        """
+        Tests that the function properly handles and returns expected date
+        of a large value
+        """
+        val = 221858827200
+        expected = '06-05-9000'
+        self.assertEqual(my_datetime(val), expected)
 
 
 if __name__ == '__main__':
