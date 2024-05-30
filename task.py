@@ -118,7 +118,8 @@ def calculate_month_day(year, days):
     """
     month_days_leap = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     month_days_reg = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    month = 1
+    month = 0
+    day = 0  # Intialize
     
     if leap_year(year):
         # Use leap year list (29 days in Feb)
@@ -128,6 +129,7 @@ def calculate_month_day(year, days):
                 month += 1
             else:
                 day = days + 1
+                break
                 
     else:
         # 28 days in feb
@@ -137,8 +139,9 @@ def calculate_month_day(year, days):
                 month += 1
             else:
                 day = days + 1
+                break
                 
-    return day, month
+    return month, day
     
 
 def my_datetime(num_sec: int) -> str:
@@ -149,10 +152,10 @@ def my_datetime(num_sec: int) -> str:
     #year = 1970
     days = num_sec // num_sec_day   # Days since 01-01-1970
     
-    year, days_left = calculate_year(days)              # Calculate year and get remaining days
-    day, month = calculate_month_day(year, days_left)   # Get day, month
+    days_left, year = calculate_year(days)              # Calculate year and get remaining days
+    month, day = calculate_month_day(year, days_left)   # Get day, month
     
-    print(f"{day}-{month}-{year}")
+    print(f"{month}-{day}-{year}")
 
 
 my_datetime(10000000000)
