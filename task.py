@@ -102,6 +102,8 @@ def calculate_year(days: int):
         if days >= days_in_year:
             days -= days_in_year
             year += 1
+        else:
+            break
 
     return days, year
 
