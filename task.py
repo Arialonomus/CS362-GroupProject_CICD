@@ -138,20 +138,21 @@ def calculate_month_day(year, days):
             else:
                 day = days + 1
                 
-    return month, day
+    return day, month
     
-
-
 
 def my_datetime(num_sec: int) -> str:
     """
     Returns the day-month-year of the number seconds after 01-01-1970
     """
-    # Constants
     num_sec_day = 86400
     #year = 1970
-    days = num_sec // num_sec_day
+    days = num_sec // num_sec_day   # Days since 01-01-1970
     
-    year, days_left = calculate_year(days)
+    year, days_left = calculate_year(days)              # Calculate year and get remaining days
+    day, month = calculate_month_day(year, days_left)   # Get day, month
     
-    pass
+    print(f"{day}-{month}-{year}")
+
+
+my_datetime(10000000000)
