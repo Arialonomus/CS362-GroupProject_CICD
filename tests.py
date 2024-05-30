@@ -237,5 +237,6 @@ class TestEndian(unittest.TestCase):
         expected = None
         self.assertEqual(conv_endian(val, 'invalid'), expected)
 
+
 if __name__ == '__main__':
     unittest.main()
