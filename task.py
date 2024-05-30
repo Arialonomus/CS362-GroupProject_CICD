@@ -90,7 +90,7 @@ def leap_year(year: int) -> bool:
         False
         
         
-def calculate_year(days: int):
+def calculate_year(days: int) -> tuple:
     """
     Takes in the number of days and calculates the year
     """
@@ -112,7 +112,7 @@ def calculate_year(days: int):
 
     return days, year
 
-def calculate_month_day(year, days):
+def calculate_month_day(year: int, days:int) -> tuple:
     """
     Calculates the month and a day based on year and days
     """
@@ -155,7 +155,4 @@ def my_datetime(num_sec: int) -> str:
     days_left, year = calculate_year(days)              # Calculate year and get remaining days
     month, day = calculate_month_day(year, days_left)   # Get day, month
     
-    print(f"{month}-{day}-{year}")
-
-
-my_datetime(0)
+    return f"{month}-{day}-{year}"
