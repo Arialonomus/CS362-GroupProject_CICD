@@ -123,8 +123,8 @@ def calculate_month_day(year, days):
     if leap_year(year):
         # Use leap year list (29 days in Feb)
         for i in month_days_leap:
-            if days >= month_days_leap:
-                days -= month_days_leap
+            if days >= i:
+                days -= i
                 month += 1
             else:
                 day = days + 1
@@ -132,8 +132,8 @@ def calculate_month_day(year, days):
     else:
         # 28 days in feb
         for i in month_days_reg:
-            if days >= month_days_reg:
-                days -= month_days_reg
+            if days >= i:
+                days -= i
                 month += 1
             else:
                 day = days + 1
