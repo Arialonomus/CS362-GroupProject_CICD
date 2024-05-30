@@ -155,4 +155,4 @@ def my_datetime(num_sec: int) -> str:
     days_left, year = calculate_year(days)              # Calculate year and get remaining days
     month, day = calculate_month_day(year, days_left)   # Get day, month
     
-    return f"{month}-{day}-{year}"
+    return f"{month:02d}-{day:02d}-{year}"
