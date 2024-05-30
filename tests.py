@@ -149,6 +149,15 @@ class TestDate(unittest.TestCase):
         val = 946684799
         expected = '12-31-1999'
         self.assertEqual(my_datetime(val), expected)
+    
+    def test5(self):
+        """
+        Tests that the function properly handles and returns expected date
+        of a large value
+        """
+        val = 221858827200
+        expected = '06-05-9000'
+        self.assertEqual(my_datetime(val), expected)
 
 if __name__ == '__main__':
     unittest.main()
