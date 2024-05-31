@@ -157,3 +157,56 @@ def my_datetime(num_sec: int):
     month, day = calculate_month_day(year, days_left)   # Get month, day
 
     return f"{month:02d}-{day:02d}-{year}"
+
+
+def hex_convert(num):
+    """
+    Helper function to convert a number to hex.
+    """
+    hex_digits = '0123456789ABCDEF'
+    result = ''
+    if num == 0:
+        return '0'
+    while num > 0:
+        remainder = num % 16
+        result = hex_digits[remainder] + result
+        num = num // 16
+
+    return result
+
+
+def conv_endian(num, endian='big'):
+    """
+    Converts an integer to a hex string with specific endian format, big by default.
+    Returns a string of the hex value with each byte separated by a space, or None if not endian.
+    """
+    # validate endianness
+    if endian not in ['big', 'little']:
+        return None
+
+    # handle negative numbers
+    negative = num < 0
+    if negative:
+        num = abs(num)
+
+    # convert to hex string
+    hex_string = hex_convert(num)
+
+    # add leading zero if odd length
+    if len(hex_string) % 2 != 0:
+        hex_string = '0' + hex_string
+
+    # split the hex string into bytes
+    bytes = [hex_string[i:i+2] for i in range(0, len(hex_string), 2)]
+
+    # if it is little endian, reverse the bytes
+    if endian == 'little':
+        bytes.reverse()
+
+    # ensure each byte is two characters long and separate by space, return
+    conv_string = ' '.join(bytes)
+
+    # if original was negative, return negative hex string
+    if negative:
+        return f'-{conv_string}'
+    return conv_string
