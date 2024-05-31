@@ -159,6 +159,22 @@ def my_datetime(num_sec: int):
     return f"{month:02d}-{day:02d}-{year}"
 
 
+def hex_convert(num):
+    """
+    Helper function to convert a number to hex.
+    """
+    hex_digits = '0123456789ABCDEF'
+    result = ''
+    if num == 0:
+        return '0'
+    while num > 0:
+        remainder = num % 16
+        result = hex_digits[remainder] + result
+        num = num // 16
+
+    return result
+
+
 def conv_endian(num, endian='big'):
     """
     Converts an integer to a hex string with specific endian format, big by default.
@@ -174,7 +190,7 @@ def conv_endian(num, endian='big'):
         num = abs(num)
 
     # convert to hex string
-    hex_string = f'{num:X}'
+    hex_string = hex_convert(num)
 
     # add leading zero if odd length
     if len(hex_string) % 2 != 0:
