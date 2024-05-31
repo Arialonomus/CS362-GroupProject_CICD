@@ -211,5 +211,5 @@ def conv_endian(num, endian='big'):
 
     # if original was negative, return negative hex string
     if negative:
-        return f'-{conv_string}'
+        return '-' + conv_string
     return conv_string
