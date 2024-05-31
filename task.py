@@ -158,7 +158,7 @@ def my_datetime(num_sec: int):
 
     month_str = str(month) if month > 9 else '0' + str(month)
     day_str = str(day) if day > 9 else '0' + str(day)
-    
+
     return month_str + '-' + day_str + '-' + str(year)
 
 
