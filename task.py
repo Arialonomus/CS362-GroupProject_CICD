@@ -156,7 +156,10 @@ def my_datetime(num_sec: int):
     days_left, year = calculate_year(days)              # Calculate year and get remaining days
     month, day = calculate_month_day(year, days_left)   # Get month, day
 
-    return f"{month:02d}-{day:02d}-{year}"
+    month_str = str(month) if month > 9 else '0' + str(month)
+    day_str = str(day) if day > 9 else '0' + str(day)
+    
+    return month_str + '-' + day_str + '-' + str(year)
 
 
 def hex_convert(num):
